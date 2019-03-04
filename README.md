@@ -29,3 +29,18 @@ Repo is configured against CircleCI, and changes to this repo will deploy to pro
 
 ## Fork
 To deploy this on your own GKE, define appropriate environment vars and change deployment templates as needed.
+
+## Caveats
+1.
+You will need to have granted the cluster CloudDNS rights for this to work OOB.
+
+The create-cluster.sh script adds lots of VM rights
+(which must be set at build time. You cannot grant additional rights to a VM after it is built in GCP).
+
+If you run into permission issues on existing clusters, you will need to provide GCP CloudDNS granting credentials to the external-dns container.
+
+2. There might be something funny with creating a cluster role binding; it does need to be run once in a clusters lifetime. But it cannot live in the ci scripts as it will break the build if the role exists. Deploy once from CI if needed and remove on next build.
+
+```
+    kubectl create clusterrolebinding cluster-admin-binding   --clusterrole cluster-admin   --user $(gcloud config get-value account)
+```
