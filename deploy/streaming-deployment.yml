@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: streaming
-          image: tootsuite/mastodon:v2.7.1
+          image: tootsuite/mastodon:v2.7.4
           command: ["yarn", "start"]
           ports:
             - name: streaming
