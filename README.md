@@ -19,6 +19,14 @@ Infrastructure as Code Repository for deploying Mastodon on GKE Kubernetes
   SMTP_DOMAIN
   VAPID_PRIVATE_KEY
   VAPID_PUBLIC_KEY
+  S3_ENABLED:
+  S3_BUCKET:
+  AWS_ACCESS_KEY_ID:
+  AWS_SECRET_ACCESS_KEY:
+  S3_REGION:
+  S3_PROTOCOL:
+  S3_HOSTNAME:
+  
 ``` 
   These can all be obtained for your environment and as per mastodon deployment documentation.
   These variables are configured in circleci
